@@ -1,9 +1,15 @@
 angular.module('twitchStatusApp', [])
 
+	.config(['$httpProvider', '$scope', function($httpProvider){
+        $scope.clientID = config.clientID;
+		$httpProvider.defaults.headers.common['Accept'] = " application/vnd.twitchtv.v5+json";
+        $httpProvider.defaults.headers.common['Client-ID'] = $scope.clientID;
+	}])
 
 .controller('mainCtrl', ['$scope', '$http', function($scope, $http){
 	$scope.twitchUsers = ["freecodecamp", "EtchTheSketch", "SoXvicious", "Dexteritybonus", "patrickrothfuss", "FeliciaDay", "ShaBooZey", "Monstercat", "TotalBiscuit", "Crendor", "comster404", "brunofin"];
 	$scope.userData =[];
+
 
 	for(i=0; i < $scope.twitchUsers.length; i++){
 		$scope.user = $scope.twitchUsers[i];
@@ -33,7 +39,7 @@ angular.module('twitchStatusApp', [])
 		}).error(function(error){
 			console.log(error)
 			var name = error.message.split("'")[1];
-			console.log("name " + name)
+			console.log("name " + name);
 			var avatar = "img/notwitch.png";
 			var game = "No Account";
 			var status = "Offline";
