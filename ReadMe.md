@@ -5,6 +5,8 @@ http://git.bbeckert.com/twitch/
  Using Twitch API
  praticed using Sass
  praticed using Angular
+ How to use secret API keys
+ 
 ```
 #User Stories
 ```
